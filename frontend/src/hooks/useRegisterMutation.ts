@@ -8,17 +8,11 @@ export function useRegisterMutation(): UseMutationResult<
   unknown,
   RegisterRequest
 > {
-  // const { signIn } = useSession();
   return useMutation({
     mutationFn: async (data: RegisterRequest) => await register(data),
     onSuccess: (data) => {
-      // signIn({
-      //   access_token: data.accessToken,
-      //   refresh_token: data.refreshToken || '',
-      // });
-      console.log('Registered user:', data);
       showNotification({
-        message: `Account created for ${data.email}`,
+        message: `Account created for ${data.email}. You can now log in.`,
         color: 'green',
       });
     },
