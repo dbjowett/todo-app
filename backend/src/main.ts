@@ -18,7 +18,7 @@ async function bootstrap() {
   );
   app.enableCors(corsConfig);
   await app.listen(port);
-  // console.log(`🚀 Listening on port: ${port}`);
+  console.log(`🚀 Nest.js: Listening on port: ${port}`);
 }
 
 bootstrap();

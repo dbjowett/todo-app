@@ -46,7 +46,7 @@ export function Navbar() {
         </ActionIcon>
 
         {isLoggedIn && (
-          <Button color="red" onClick={signOut}>
+          <Button variant="light" color="red" onClick={signOut}>
             Logout
           </Button>
         )}
