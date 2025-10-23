@@ -29,10 +29,17 @@ export default function AuthPage() {
     if (isLogin) {
       loginMutation.mutate({ email: values.email, password: values.password });
     } else {
-      registerMutation.mutate({
-        email: values.email,
-        password: values.password,
-      });
+      registerMutation
+        .mutateAsync({
+          email: values.email,
+          password: values.password,
+        })
+        .then(() => {
+          setIsLogin(true);
+        })
+        .catch(() => {
+          console.log('Registration failed');
+        });
     }
   };
 

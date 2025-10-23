@@ -1,3 +1,4 @@
+import { useQueryClient } from '@tanstack/react-query';
 import { createContext, type ReactNode, useContext, useEffect, useState } from 'react';
 import { logout } from '../api/auth';
 // import { useNavigate } from 'react-router-dom';
@@ -38,6 +39,7 @@ const getAccessToken = () => localStorage.getItem('accessToken');
 export function SessionProvider({ children }: { children: ReactNode }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     const loadSession = async () => {
@@ -65,6 +67,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const signOut = async () => {
     try {
       await logout();
+      queryClient.clear();
     } catch (err) {
       console.error('Error during logout:', err);
     } finally {
