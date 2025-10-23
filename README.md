@@ -4,6 +4,10 @@ A full-stack Todo application with a **React + Vite frontend**, **NestJS backend
 
 ---
 
+[Demo Video](https://youtu.be/O5F-xCN1-To)
+
+---
+
 ## Table of Contents
 
 - [Project Structure](#project-structure)
@@ -13,7 +17,6 @@ A full-stack Todo application with a **React + Vite frontend**, **NestJS backend
   - [Database](#starting-dev-database)
   - [Prisma Setup & Migrations](#prisma-setup--migrations)
 - [Environment Variables](#environment-variables)
-- [To-Do / Roadmap](#todos--roadmap)
 
 ---
 
@@ -84,8 +87,6 @@ DATABASE_URL="mysql://root:rootpassword@localhost:3306/tasks_db"
 JWT_SECRET="your_jwt_secret_here"
 ```
 
-> **Do not commit `.env` files** with secrets.
-
 2. **Run initial migration**
 
 ```bash
@@ -125,17 +126,22 @@ JWT_SECRET="your_jwt_secret_here"
 VITE_API_URL="http://localhost:3000"
 ```
 
-> Remember: Do not commit `.env` files with secrets.
+# Decision Making
 
----
+## Front End
 
-## TODOS / Roadmap
+- TypeScript: type safety.
+- Mantine: pre-built accessible UI components tp build quickly.
+- React Query: data fetching, caching, and easy cache invalidation.
 
-- Fix register flow
+## Back End
 
-  - Notification appears below content, needs styling
+- NestJS: structured, scalable framework (similar to Laravel)
+- Prisma: type-safe ORM and simplified database access.
+- JWT Auth: stateless, per-user task security.
+- DTOs: ensures request integrity.
 
-- Add server-side filtering for completed / incomplete tasks
-- Pagination for large task lists
-- Improve JWT refresh flow
-- More features coming…
+## Docker / Infrastructure
+
+- Docker Compose: Quick DB for dev environment.
+- Portability: quickly set up dev environment on an computer with `docker-compose up`.
