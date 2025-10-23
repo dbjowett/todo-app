@@ -24,8 +24,10 @@ export function Navbar() {
 
   return (
     <Flex justify="space-between" align="center" px="lg" py="sm">
-      <Flex gap="md" align="center">
-        <IconPencil style={{ width: 28, height: 28 }} />
+      <Flex gap="xs" align="center">
+        <ActionIcon variant="filled" size="lg" radius="md" aria-label="App icon">
+          <IconPencil style={{ width: 28, height: 28 }} />
+        </ActionIcon>
         <Text fw={700} fz="lg">
           TasksApp
         </Text>

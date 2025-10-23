@@ -1,3 +1,4 @@
+import { ValidationPipe } from '@nestjs/common';
 import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
@@ -13,6 +14,13 @@ const corsConfig: CorsOptions = {
 async function bootstrap() {
   const port = parseInt(process.env.PORT) || 3000;
   const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+    }),
+  );
   app.use((req: any, res: any, next: any) =>
     new LoggerMiddleware().use(req, res, next),
   );

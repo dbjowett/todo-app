@@ -6,13 +6,11 @@ import {
   Request,
   UseGuards,
 } from '@nestjs/common';
+import { User } from 'src/common/utils/user.decorator';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
-
-class AuthDto {
-  email: string;
-  password: string;
-}
+import { AuthDto } from './dto/auth.dto';
+import { UserPayload } from './types';
 
 @Controller('auth')
 export class AuthController {
@@ -25,14 +23,13 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() body: AuthDto) {
-    console.log('HERE');
     return this.authService.login(body.email, body.password);
   }
 
   @Post('logout')
   @UseGuards(AuthGuard)
-  async logout(@Request() req) {
-    return this.authService.logout(req.user.id);
+  async logout(@User() user: UserPayload) {
+    return this.authService.logout(user.sub);
   }
 
   @UseGuards(AuthGuard)

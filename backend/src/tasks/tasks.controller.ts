@@ -24,7 +24,6 @@ export class TasksController {
 
   @Get()
   getAll(@User() user: UserPayload) {
-    console.log('Fetching tasks for user:', user);
     if (!user || !user.sub) {
       throw new Error('User information is missing in the request.');
     }

@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   async logout(userId: number) {
-    // If including refresh tokens invalidate here
+    // TODO: ADD REFRESH TOKEN
     return { message: `User with ID ${userId} logged out successfully.` };
   }
 }
